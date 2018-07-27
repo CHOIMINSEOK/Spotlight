@@ -49,7 +49,7 @@ public class  MainActivity extends AppCompatActivity {
                         new PointF(twoLocation[0] + two.getWidth() / 2f, twoLocation[1] + two.getHeight() / 2f);
                 // make an target
                 SimpleTarget secondTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(point)
-                        .setShape(new HighlightCircle(80f))
+                        .setShape(new HighlightRectangle(200f, 100f))
                         .setAnimationField(animationField)
                         .setTitle("second title")
                         .setDescription("second description")
