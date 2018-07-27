@@ -34,9 +34,11 @@ public class  MainActivity extends AppCompatActivity {
                 one.getLocationInWindow(oneLocation);
                 float oneX = oneLocation[0] + one.getWidth() / 2f;
                 float oneY = oneLocation[1] + one.getHeight() / 2f;
+                float[] animationField = {1f, 1.2f};
                 // make an target
                 SimpleTarget firstTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(oneX, oneY)
                         .setShape(new Circle(100f))
+                        .setAnimationField(animationField)
                         .setTitle("first title")
                         .setDescription("first description")
                         .build();
@@ -49,6 +51,7 @@ public class  MainActivity extends AppCompatActivity {
                 // make an target
                 SimpleTarget secondTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(point)
                         .setShape(new Circle(80f))
+                        .setAnimationField(animationField)
                         .setTitle("second title")
                         .setDescription("second description")
                         .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
@@ -68,6 +71,7 @@ public class  MainActivity extends AppCompatActivity {
 
                 thirdTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(findViewById(R.id.three))
                         .setShape(new Circle(200f))
+                        .setAnimationField(animationField)
                         .setTitle("third title")
                         .setDescription("third description")
                         .build();
