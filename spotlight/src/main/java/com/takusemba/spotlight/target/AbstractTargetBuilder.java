@@ -30,6 +30,7 @@ public abstract class AbstractTargetBuilder<T extends AbstractTargetBuilder<T, S
     protected PointF point = DEFAULT_POINT;
     protected Shape shape = DEFAULT_SHAPE;
     protected long duration = DEFAULT_DURATION;
+    protected float[] animationField = {0f, 1f};
     protected TimeInterpolator animation = DEFAULT_ANIMATION;
     protected OnTargetStateChangedListener listener = null;
 
@@ -68,6 +69,11 @@ public abstract class AbstractTargetBuilder<T extends AbstractTargetBuilder<T, S
             throw new IllegalArgumentException("Shape cannot be null");
         }
         this.shape = shape;
+        return self();
+    }
+
+    public T setAnimationField(float[] animationField) {
+        this.animationField = animationField;
         return self();
     }
 

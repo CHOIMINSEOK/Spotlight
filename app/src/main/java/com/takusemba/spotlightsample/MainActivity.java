@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.takusemba.spotlight.OnSpotlightStateChangedListener;
 import com.takusemba.spotlight.OnTargetStateChangedListener;
 import com.takusemba.spotlight.Spotlight;
-import com.takusemba.spotlight.shape.Circle;
 import com.takusemba.spotlight.target.CustomTarget;
 import com.takusemba.spotlight.target.SimpleTarget;
 import com.takusemba.spotlight.target.Target;
@@ -34,9 +33,11 @@ public class  MainActivity extends AppCompatActivity {
                 one.getLocationInWindow(oneLocation);
                 float oneX = oneLocation[0] + one.getWidth() / 2f;
                 float oneY = oneLocation[1] + one.getHeight() / 2f;
+                float[] animationField = {1f, 1.2f};
                 // make an target
                 SimpleTarget firstTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(oneX, oneY)
-                        .setShape(new Circle(100f))
+                        .setShape(new HighlightCircle(100f))
+                        .setAnimationField(animationField)
                         .setTitle("first title")
                         .setDescription("first description")
                         .build();
@@ -48,7 +49,8 @@ public class  MainActivity extends AppCompatActivity {
                         new PointF(twoLocation[0] + two.getWidth() / 2f, twoLocation[1] + two.getHeight() / 2f);
                 // make an target
                 SimpleTarget secondTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(point)
-                        .setShape(new Circle(80f))
+                        .setShape(new HighlightRectangle(200f, 100f))
+                        .setAnimationField(animationField)
                         .setTitle("second title")
                         .setDescription("second description")
                         .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
@@ -67,7 +69,8 @@ public class  MainActivity extends AppCompatActivity {
                 SimpleTarget thirdTarget;
 
                 thirdTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(findViewById(R.id.three))
-                        .setShape(new Circle(200f))
+                        .setShape(new HighlightCircle(200f))
+                        .setAnimationField(animationField)
                         .setTitle("third title")
                         .setDescription("third description")
                         .build();
@@ -106,7 +109,7 @@ public class  MainActivity extends AppCompatActivity {
                 View first = inflater.inflate(R.layout.layout_target, null);
                 final CustomTarget firstTarget =
                         new CustomTarget.Builder(MainActivity.this).setPoint(findViewById(R.id.one))
-                                .setShape(new Circle(100f))
+                                .setShape(new HighlightCircle(100f))
                                 .setOverlay(first)
                                 .build();
 
@@ -115,7 +118,7 @@ public class  MainActivity extends AppCompatActivity {
                 View second = inflater.inflate(R.layout.layout_target, null);
                 final CustomTarget secondTarget =
                         new CustomTarget.Builder(MainActivity.this).setPoint(findViewById(R.id.two))
-                                .setShape(new Circle(800f))
+                                .setShape(new HighlightCircle(800f))
                                 .setOverlay(second)
                                 .build();
 
@@ -124,7 +127,7 @@ public class  MainActivity extends AppCompatActivity {
                 View third = inflater.inflate(R.layout.layout_target, null);
                 final CustomTarget thirdTarget =
                         new CustomTarget.Builder(MainActivity.this).setPoint(findViewById(R.id.three))
-                                .setShape(new Circle(200f))
+                                .setShape(new HighlightCircle(200f))
                                 .setOverlay(third)
                                 .build();
 
