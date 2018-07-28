@@ -19,7 +19,8 @@ public class HighlightCircle implements Shape {
 
     @Override
     public void draw(Canvas canvas, PointF point, float value, Paint paint) {
-        canvas.drawCircle(point.x, point.y, value * radius, highlight);
+        float highlightValue = radius * (1f + 0.2f * value);
+        canvas.drawCircle(point.x, point.y, highlightValue, highlight);
         canvas.drawCircle(point.x, point.y, radius, paint);
     }
 

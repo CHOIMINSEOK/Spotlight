@@ -19,17 +19,17 @@ public abstract class Target {
     private PointF point;
     private View overlay;
     private long duration;
-    private float[] animationField;
+    private float[] animationValue;
     private TimeInterpolator animation;
     private OnTargetStateChangedListener listener;
 
     public Target(Shape shape, PointF point, View overlay, long duration,
-                  float[] animationField, TimeInterpolator animation, OnTargetStateChangedListener listener) {
+                  float[] animationValue, TimeInterpolator animation, OnTargetStateChangedListener listener) {
         this.shape = shape;
         this.point = point;
         this.overlay = overlay;
         this.duration = duration;
-        this.animationField = animationField;
+        this.animationValue = animationValue;
         this.animation = animation;
         this.listener = listener;
     }
@@ -70,8 +70,8 @@ public abstract class Target {
         return duration;
     }
 
-    public float[] getAnimationField() {
-        return animationField;
+    public float[] getAnimationValue() {
+        return animationValue;
     }
 
     /**

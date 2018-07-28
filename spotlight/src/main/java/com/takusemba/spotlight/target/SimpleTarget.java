@@ -24,8 +24,8 @@ import com.takusemba.spotlight.shape.Shape;
  **/
 public class SimpleTarget extends Target {
 
-    private SimpleTarget(Shape shape, PointF point, View overlay, long duration, float[] animationField, TimeInterpolator animation, OnTargetStateChangedListener listener) {
-        super(shape, point, overlay, duration, animationField, animation, listener);
+    private SimpleTarget(Shape shape, PointF point, View overlay, long duration, float[] animationValue, TimeInterpolator animation, OnTargetStateChangedListener listener) {
+        super(shape, point, overlay, duration, animationValue, animation, listener);
     }
 
     public static class Builder extends AbstractTargetBuilder<Builder, SimpleTarget> {
@@ -61,7 +61,7 @@ public class SimpleTarget extends Target {
             ((TextView) overlay.findViewById(R.id.title)).setText(title);
             ((TextView) overlay.findViewById(R.id.description)).setText(description);
             calculatePosition(point, shape, overlay);
-            return new SimpleTarget(shape, point, overlay, duration, animationField, animation, listener);
+            return new SimpleTarget(shape, point, overlay, duration, animationValue, animation, listener);
         }
 
         private void calculatePosition(final PointF point, final Shape shape, View overlay) {

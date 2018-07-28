@@ -80,8 +80,8 @@ class SpotlightView extends FrameLayout {
 
     void turnUp(Target target, AbstractAnimatorListener listener) {
         currentTarget = target;
-        float[] animationField = currentTarget.getAnimationField();
-        animator = ValueAnimator.ofFloat(animationField[0], animationField[1]);
+        float[] animationValue = currentTarget.getAnimationValue();
+        animator = ValueAnimator.ofFloat(animationValue);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -95,8 +95,8 @@ class SpotlightView extends FrameLayout {
     }
 
     void turnDown(AbstractAnimatorListener listener) {
-        float[] animationField = currentTarget.getAnimationField();
-        animator = ValueAnimator.ofFloat(animationField[1], animationField[0]);
+        float[] animationValue = currentTarget.getAnimationValue();
+        animator = ValueAnimator.ofFloat(animationValue[1], animationValue[0]);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

@@ -17,8 +17,8 @@ import com.takusemba.spotlight.shape.Shape;
  **/
 public class CustomTarget extends Target {
 
-    private CustomTarget(Shape shape, PointF point, View overlay, long duration, float[] animationField, TimeInterpolator animation, OnTargetStateChangedListener listener) {
-        super(shape, point, overlay, duration, animationField, animation, listener);
+    private CustomTarget(Shape shape, PointF point, View overlay, long duration, float[] animationValue, TimeInterpolator animation, OnTargetStateChangedListener listener) {
+        super(shape, point, overlay, duration, animationValue, animation, listener);
     }
 
     public static class Builder extends AbstractTargetBuilder<Builder, CustomTarget> {
@@ -46,7 +46,7 @@ public class CustomTarget extends Target {
 
         @Override
         public CustomTarget build() {
-            return new CustomTarget(shape, point, overlay, duration, animationField, animation, listener);
+            return new CustomTarget(shape, point, overlay, duration, animationValue, animation, listener);
         }
     }
 }
