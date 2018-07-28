@@ -2,9 +2,11 @@ package com.takusemba.spotlightsample;
 
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 
@@ -36,7 +38,8 @@ public class  MainActivity extends AppCompatActivity {
                 float oneY = oneLocation[1] + one.getHeight() / 2f;
                 // make an target
                 SimpleTarget firstTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(oneX, oneY)
-                        .setShape(new Circle(100f))
+                        .setShape(new HighlightCircle(100f, ResourcesCompat.getColor(getResources(), R.color.colorHighlight, getTheme())))
+                        .setDuration(500L)
                         .setTitle("first title")
                         .setDescription("first description")
                         .build();
@@ -48,7 +51,8 @@ public class  MainActivity extends AppCompatActivity {
                         new PointF(twoLocation[0] + two.getWidth() / 2f, twoLocation[1] + two.getHeight() / 2f);
                 // make an target
                 SimpleTarget secondTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(point)
-                        .setShape(new Circle(80f))
+                        .setShape(new HighlightRectangle(300f, 150f, ResourcesCompat.getColor(getResources(), R.color.colorHighlight, getTheme())))
+                        .setDuration(500L)
                         .setTitle("second title")
                         .setDescription("second description")
                         .setOnSpotlightStartedListener(new OnTargetStateChangedListener<SimpleTarget>() {
@@ -67,15 +71,16 @@ public class  MainActivity extends AppCompatActivity {
                 SimpleTarget thirdTarget;
 
                 thirdTarget = new SimpleTarget.Builder(MainActivity.this).setPoint(findViewById(R.id.three))
-                        .setShape(new Circle(200f))
+                        .setShape(new HighlightCircle(200f, ResourcesCompat.getColor(getResources(), R.color.colorHighlight, getTheme())))
+                        .setDuration(500L)
                         .setTitle("third title")
                         .setDescription("third description")
                         .build();
 
                 Spotlight.with(MainActivity.this)
-                        .setOverlayColor(R.color.background)
+                        .setOverlayColor(R.color.colorOverlay)
                         .setDuration(100L)
-                        .setAnimation(new DecelerateInterpolator(2f))
+                        .setAnimation(new AccelerateDecelerateInterpolator())
                         .setTargets(firstTarget, secondTarget, thirdTarget)
                         .setClosedOnTouchedOutside(true)
                         .setOnSpotlightStateListener(new OnSpotlightStateChangedListener() {

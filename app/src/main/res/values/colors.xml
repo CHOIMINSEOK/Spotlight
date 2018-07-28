@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="background">#E6000000</color>
+    <color name="colorOverlay">#99000000</color><!--Black 60%-->
+    <color name="colorHighlight">#1fffffff</color><!--White 12%-->
 </resources>
